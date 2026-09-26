@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Test Page</title>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+            /* Glides smoothly instead of jumping abruptly when anchor links are clicked */
+        }
+
+        body {
+            margin: 0;
+            background-color: #f8fafc;
+            /* Clean, modern slate-gray background */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            /* Renders crisp, sharp letterforms on retina displays */
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        /* 1. The Navbar Box */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            /* Pushes Logo to far-left, Sign In to far-right, and Links to the middle */
+            align-items: center;
+            /* Centers everything neatly along the horizontal line */
+            padding: 14px 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            /* A gentle shadow underneath the bar */
+            position: sticky;
+            /* Become a margnet that sticks to the viewport!*/
+            top: 0;
+            /* stick exactly when you touch 0 pixels from the ceiling!*/
+            z-index: 100;
+            /* Stay floating ON TOP all other cards underneath you!*/
+        }
+
+        /* 2. The Brand Logo */
+        .nav-logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #111111;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 3. The Links in the Middle */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            /* 20px space between each text link */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555555;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #065fd4;
+            /* Turns blue when hovered */
+        }
+
+        /* 4. The Sign In Button */
+        .nav-btn {
+            background-color: #065fd4;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 18px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: #044397;
+        }
+
+        /* ==================================== */
+        /* 2. HERO SECTION (The Front Porch)    */
+        /* ==================================== */
+        .hero-section {
+            text-align: center;
+            /* Centers the title, paragraph, and button down the middle */
+            padding: 60px 20px;
+            /* 60px pillow on top/bottom, 20px on the sides */
+            background-color: lightblue;
+            /* Bright white canvas */
+            border-bottom: 1px solid #e5e5e5;
+            /* A very faint, elegant divider line under the porch */
+        }
+
+        .hero-title {
+            font-size: 36px;
+            /* Large, confident headline */
+            color: #1a1a1a;
+            /* Deep charcoal—softer and more modern than harsh pure black */
+            margin-bottom: 12px;
+            /* Gentle push down toward the subtitle */
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #606060;
+            /* Muted gray so it doesn't fight with the big title */
+            max-width: 600px;
+            /* Prevents the text line from stretching awkwardly across wide monitors */
+            margin: 0 auto 24px auto;
+            /* '0' top, 'auto' centers the paragraph block, '24px' pushes the button down */
+            line-height: 1.5;
+            /* Adds breathing room between lines of text so it's effortless to read */
+        }
+
+        .hero-btn {
+            background-color: #065fd4;
+            color: white;
+            border: none;
+            font-size: 16px;
+            padding: 12px 28px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(6, 95, 212, 0.3);
+            /* Subtle blue glow matching the button color! */
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .hero-btn:hover {
+            background-color: #044397;
+            transform: translateY(-2px);
+            /* Makes the button physically lift up 2 pixels when hovered! */
+        }
+
+        /* Shared rules for both buttons */
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            /* Round the corner like mordern buttons */
+            transition: all 0.2s;
+            /* The magic wand: tells the browser to change smoothly*/
+        }
+
+        /* Subscribe button */
+        .sub-btn {
+            background-color: #cc0000;
+            color: white;
+            border: none;
+        }
+
+        .sub-btn:hover {
+            background-color: #990000;
+        }
+
+        .join-btn {
+            background-color: white;
+            color: #065fd4;
+            border: 1px solid #065fd4;
+        }
+
+        .join-btn:hover {
+            background-color: #def1ff;
+        }
+
+        /* When the mouse hovers over the button*/
+        button:hover {
+            background-color: darkgreen;
+            padding-left: 40px;
+            /* stretch left*/
+            padding-right: 40px;
+            /* stretch right*/
+        }
+
+        .button-row {
+            display: flex;
+            gap: 15px;
+            /* Pushes the entire group to the exact middle */
+            align-items: center;
+            /* Keep them balanced along the same horizontal line */
+            justify-content: center;
+            /* Clean 12px space between the exact button */
+            margin-top: 20px;
+            /* Breathing room below the description text*/
+
+            /* Put a clean 15px space between the buttons! */
+        }
+
+        /* The Click / Press Effect */
+        .sub-btn:active,
+        .join-btn:active,
+        .nav-btn:active,
+        .hero-btn:active {
+            transform: scale(0.96);
+            /* Compresses the button inward by 4% */
+        }
+
+        .channel-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            /* Turns a square photo into a perfect circle */
+            margin-top: 20px;
+            /* Pushes it down so it doesnt touch the buttons */
+            /* 1. Base channel picture styling */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f0f0f0;
+            /* Light frame ring around the portrait */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+
+        /* 2. When hovering directly over the picture */
+        .channel-pic:hover {
+            transform: scale(1.08);
+            /* Gently expands by 8% */
+            border-color: #065fd4;
+            /* Ring turns to brand blue */
+        }
+
+
+        /* 2. MY NEW PROFILE CSS CARD */
+        .profile-card {
+            width: 300px;
+            background-color: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0.15);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0.08);
+            /* A gentle resting shadow */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            /* "I am the bulletin board! Kids inside can pin to my corners." */
+            /* THE NEW ADDITION: The Smoothness Controller */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* 2. Add the Hover Reaction */
+        .profile-card:hover {
+            transform: translateY(-8px);
+            /* Lifts the card 8px up off the desk */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+            /* The shadow grows deeper and softer as it rises */
+        }
+
+        .badge {
+            position: absolute;
+            /* "I am a sticky note, free to pin anywhere inside the card!" */
+            top: 16px;
+            /* 16px away from the top edge */
+            right: 16px;
+            /* 16px away from the right edge */
+            background-color: #2ba640;
+            /* Fresh green color */
+            color: white;
+            /* White letters */
+            font-size: 11px;
+            /* Small, tidy text */
+            font-weight: bold;
+            /* Makes the letters thick and punchy */
+            padding: 4px 8px;
+            /* Little pillow room around the letters */
+            border-radius: 8px;
+            /* Soft rounded corners */
+            letter-spacing: 1px;
+            /* Adds a tiny gap between P - R - O */
+
+        }
+
+        .search-bar {
+            width: 80%;
+            /* Takes up 80% of the card*/
+            display: block;
+            padding: 10px 14px;
+            /*  Pillow room inside so text isn't touching borders */
+            border: 1.5px solid #dcdcdc;
+            /* A light, soft gray outline */
+            margin: 0 auto 16px;
+            border-radius: 8px;
+            /* Rounds the corners into a pill shape */
+            outline: none;
+            /* Removes the browser's default harsh ring */
+            font-size: 14px;
+            /* Makes typed text comfortable to read */
+            color: #333333;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            /* Pushes the buttons down so they don't collide */
+            transition: border-color 0.2s;
+            box-shadow: 0.2s;
+            /* Smooth transition when clicking */
+
+        }
+
+        /*When the user clicks inside to type */
+        .search-bar:focus {
+            border-color: #065fd4;
+            /* Turns the border bright blue when active! */
+            box-shadow: 0 0 0 3px rgba(6, 95, 212, 0.15);
+
+        }
+
+        /* Soft outer glow ring /*
+
+        /* Styling our channel title link */
+        .channel-link {
+            color: #111111;
+            /* Makes the text dark charcoal instead of bright blue */
+            text-decoration: none;
+            /* Erases the default underline! */
+            transition: color 0.2s;
+            /* Smooth color change on touch */
+        }
+
+        /* When the mouse touches the title */
+        .channel-link:hover {
+            color: #cc0000;
+            /* Turns red when hovered, like a YouTube link! */
+            text-decoration: underline;
+            /* Puts the underline back ONLY when touching it */
+
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 80px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* ==================================== */
+        /* 4. FOOTER (The Bottom Closure)       */
+        /* ==================================== */
+        .site-footer {
+            background-color: #1a1a1a;
+            /* Dark charcoal base creates visual weight at the bottom */
+            color: #a0a0a0;
+            /* Soft gray text for easy legibility on dark backgrounds */
+            padding: 30px 20px;
+            /* Generous vertical padding to breathe */
+            margin-top: 60px;
+            /* Pushes the footer away from the card grid above it */
+            font-family: Arial, sans-serif;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            /* Matches the cards-container width for visual alignment */
+            margin: 0 auto;
+            /* Centers the content block */
+            display: flex;
+            justify-content: space-between;
+            /* Pushes copyright to the left, links to the right */
+            align-items: center;
+            /* Vertically centers text and links on the same row */
+            flex-wrap: wrap;
+            /* Allows links to drop down cleanly on small screens */
+            gap: 16px;
+        }
+
+        .copyright {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            /* Pops to crisp white when hovered */
+        }
+
+        /* ==================================== */
+        /* 5. RESPONSIVE RULES (Mobile Screens) */
+        /* ==================================== */
+        @media (max-width: 600px) {
+
+            /* 1. Simplify the Navbar for phones */
+            .navbar {
+                padding: 12px 16px;
+                /* Slimmer padding so it doesn't eat up phone screen height */
+            }
+
+            /* 2. Hide the middle text links on small screens to save space */
+            .nav-links {
+                display: none;
+                /* Makes the links vanish cleanly on narrow screens */
+            }
+
+            /* 3. Scale down the Hero headline so it doesn't wrap into 4 tall lines */
+            .hero-title {
+                font-size: 26px;
+            }
+
+            /* 4. Center footer elements vertically on mobile */
+            .footer-content {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- The Website Dashboard / Navbar -->
+    <nav class="navbar">
+        <div class="nav-logo">Muak Logic</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Tutorials</a>
+            <a href="#">About</a>
+        </div>
+        <button class="nav-btn">Sign In</button>
+    </nav>
+    <!-- The Front Porch / Hero Section -->
+    <section class="hero-section">
+        <h1 class="hero-title">Master Modern Web Development</h1>
+        <p class="hero-subtitle">
+            Step-by-step guides, interactive practice, and core foundations built from scratch.
+        </p>
+        <button class="hero-btn">Get Started</button>
+    </section>
+
+    <hr style="margin: 40px 0;">
+
+
+    <!-- 2. MY NEW PROFILE CARD -->
+
+
+    <!-- The Main Card BOX -->
+
+    <div class="cards-container">
+        <!-- CARD 1 -->
+        <div class="profile-card">
+            <!-- Our new badge! -->
+            <span class="badge">PRO</span>
+            <img class="channel-pic" src="matrix-hacker-background (1).jpg">
+            <h2><a href="https://www.google.com" target="_blank" class="channel-link">Tech Master</a></h2>
+            <p class="channel-desc">Teaching you how to code modern websites step by step</p>
+            <input type="text" class="search-bar" placeholder="Search lessons...">
+            <div class="button-row">
+                <button class="sub-btn">Subscribe</button>
+                <button class="join-btn">Join</button>
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="profile-card">
+            <!-- Our new badge! -->
+            <span class="badge">PRO</span>
+            <img class="channel-pic" src="matrix-hacker-background (1).jpg">
+            <h2><a href="https://www.google.com" target="_blank" class="channel-link">Tech Master</a></h2>
+            <p class="channel-desc">Teaching you how to code modern websites step by step</p>
+            <input type="text" class="search-bar" placeholder="Search lessons...">
+            <div class="button-row">
+                <button class="sub-btn">Subscribe</button>
+                <button class="join-btn">Join</button>
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="profile-card">
+            <!-- Our new badge! -->
+            <span class="badge">PRO</span>
+            <img class="channel-pic" src="matrix-hacker-background (1).jpg">
+            <h2><a href="https://www.google.com" target="_blank" class="channel-link">Tech Master</a></h2>
+            <p class="channel-desc">Teaching you how to code modern websites step by step</p>
+            <input type="text" class="search-bar" placeholder="Search lessons...">
+            <div class="button-row">
+                <button class="sub-btn">Subscribe</button>
+                <button class="join-btn">Join</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p class="copyright">© 2026 muaklogic. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
